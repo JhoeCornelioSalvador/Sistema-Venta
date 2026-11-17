@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Facturación - El Gusto Marino</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../Dashboard/dashboard.css">
+  <link rel="stylesheet" href="facturacion.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="../js/auth-guard.js" data-role="mesero,administrador"></script>
+</head>
+
+<body>
+  <div class="ocean-bg">
+    <div class="dashboard-layout">
+      <aside id="sidebar"></aside>
+      <main class="main-content">
+        <div class="module-card">
+          <h1>Pedidos Pendientes</h1>
+          <section class="tabla-pedidos">
+            <table id="tablaPedidos">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Cliente</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </section>
+
+          <!-- Detalles del pedido -->
+          <section id="detallePedido" class="detalle-card" style="display:none;">
+            <h2>Detalle del Pedido</h2>
+            <p><strong>Cliente:</strong> <span id="detalleCliente"></span></p>
+            <div id="listaPlatos"></div>
+            <p id="totalGeneral" class="total"></p>
+
+            <!-- Métodos de pago -->
+            <div class="pago-opciones">
+              <h3>Método de Pago:</h3>
+              <label>
+                <input type="radio" name="metodoPago" value="efectivo"> Efectivo
+              </label>
+              <label>
+                <input type="radio" name="metodoPago" value="yape"> Yape
+              </label>
+
+              <!-- Código QR Yape -->
+              <div class="qr-yape" id="qrYape">
+                <p>Escanee el código con Yape:</p>
+                <img src="CodigoQR/QR_Yape.jpg" alt="QR Yape">
+              </div>
+
+              <!-- Confirmación de pago -->
+              <div class="confirmacion-pago" id="confirmacionPago">
+                <p><strong>¿El cliente confirmó el pago?</strong></p>
+                <button class="btn-confirmar btn-si" onclick="confirmarPago(true)">Confirmar pago</button>
+                <button class="btn-confirmar btn-no" onclick="confirmarPago(false)">Cancelar</button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../Dashboard/loadSidebar.js"></script>
+  <script src="facturacion.js"></script>
+</body>
+
+</html>
+

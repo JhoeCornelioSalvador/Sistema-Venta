@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservas - El Gusto Marino</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../Dashboard/dashboard.css">
+  <link rel="stylesheet" href="reservas.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="../js/auth-guard.js" data-role="mesero,administrador"></script>
+</head>
+<body>
+  <div class="ocean-bg">
+    <div class="dashboard-layout">
+      <aside id="sidebar"></aside>
+
+      <main class="main-content">
+        <div class="reservas-main-card">
+          <div class="module-header">
+            <h1>Gestión de Reservas</h1>
+            <p class="module-description">Administra y programa las reservas del restaurante</p>
+          </div>
+
+          <div class="reservas-container">
+            
+            <!-- FORMULARIO NUEVA RESERVA -->
+            <div class="form-section">
+              <div class="section-header">
+                <h2>Nueva Reserva</h2>
+                <div class="header-line"></div>
+              </div>
+              
+              <div class="reserva-form">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="nombreCliente">Nombres *</label>
+                    <input type="text" id="nombreCliente" placeholder="Ingrese nombres" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="apellidoCliente">Apellidos *</label>
+                    <input type="text" id="apellidoCliente" placeholder="Ingrese apellidos" required>
+                  </div>
+                  <div class="telefono-personas-group">
+                    <div class="form-group">
+                      <label for="telefonoCliente">Teléfono</label>
+                      <input type="tel" id="telefonoCliente" placeholder="Ej: 987654321">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cantidadPersonas">Cantidad de Personas *</label>
+                      <input type="number" id="cantidadPersonas" min="1" max="30" placeholder="Ej: 4" required>
+                    </div>
+                  </div>
+
+                  <!-- FECHA Y HORA  -->
+                  <div class="fecha-hora-group">
+                    <div class="form-group">
+                      <label for="fechaReserva">Fecha de Reserva *</label>
+                      <input type="date" id="fechaReserva" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="horaReserva">Hora de Reserva *</label>
+                      <input type="time" id="horaReserva" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label for="observaciones">Observaciones</label>
+                    <textarea id="observaciones" placeholder="Notas especiales, requerimientos, etc..." rows="3"></textarea>
+                  </div>
+                </div>
+
+                <!-- Selección de Mesas -->
+                <div class="seleccion-mesas">
+                  <h3>Seleccionar Mesas (máximo 3)</h3>
+                  <div id="contenedor-mesas" class="mesas-grid"></div>
+                  <p id="mensajeMesas" class="mensaje-error">
+                    Selecciona las mesas para la reserva.
+                  </p>
+                </div>
+
+                <button id="btnGuardarReserva" class="btn-guardar">Guardar Reserva</button>
+              </div>
+            </div>
+
+            <!-- LISTA RESERVAS ACTIVAS -->
+            <div class="list-section">
+              <div class="section-header">
+                <h2>Reservas Activas</h2>
+                <div class="header-line"></div>
+              </div>
+              
+              <div class="reservas-lista">
+                <div class="filtros">
+                  <div class="busqueda-group">
+                    <label>Buscar por nombre o teléfono:</label>
+                    <div class="busqueda-input">
+                      <input type="text" id="filtroBusqueda" placeholder="Ej: Juan Pérez o 987654321">
+                      <div class="busqueda-icon">🔍</div>
+                    </div>
+                  </div>
+
+                  <div class="filtros-row">
+                    <div class="filtro-group">
+                      <label>Estado:</label>
+                      <select id="filtroEstado">
+                        <option value="todas">Todas las reservas</option>
+                        <option value="pendiente">Pendientes</option>
+                        <option value="confirmada">Confirmadas</option>
+                        <option value="cumplida">Cumplidas</option>
+                        <option value="cancelada">Canceladas</option>
+                      </select>
+                    </div>
+                    <div class="filtro-group">
+                      <label>Fecha:</label>
+                      <input type="date" id="filtroFecha">
+                    </div>
+                  </div>
+                </div>
+                <div id="listaReservas" class="lista-reservas"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal para detalles -->
+  <div id="modalDetalles" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Detalles de Reserva</h2>
+      <div id="detallesReserva"></div>
+    </div>
+  </div>
+
+  <script src="../Dashboard/loadSidebar.js"></script>
+  <script>
+    cargarSidebar("mesero");
+  </script>
+  <script src="reservas.js"></script>
+</body>
+</html>

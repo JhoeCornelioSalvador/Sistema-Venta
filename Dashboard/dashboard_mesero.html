@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel del Mesero - El Gusto Marino</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../js/auth-guard.js" data-role="mesero,administrador"></script>
+</head>
+<body>
+  <div class="dashboard-layout">
+
+    <aside id="sidebar"></aside>
+
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <main class="main-content">
+      <div class="dashboard-header">
+        <div class="header-left">
+          <h1>¡Bienvenido, Mesero!</h1>
+          <p>Gestiona pedidos, atiende mesas y realiza facturación en <strong>El Gusto Marino</strong>.</p>
+          <div class="turno-info">
+            <span class="badge turno-activo">
+              <i class="fas fa-clock"></i>
+              Turno Activo
+            </span>
+            <span class="hora-turno">Inició: <span id="horaInicioTurno">10:00 AM</span></span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-profile">
+            <div class="avatar">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="user-info">
+              <h4>Mesero</h4>
+              <p>Atención al Cliente</p>
+            </div>
+          </div>
+          <div class="fecha-actual">
+            <span id="fechaHoy"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estadísticas del turno -->
+      <div class="estadisticas-grid">
+        <div class="estadistica-card ventas-turno">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Ventas del Turno</h3>
+              <div class="estadistica-valor" id="ventasTurno">$0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia" id="tendenciaTurno">
+          </div>
+        </div>
+
+        <div class="estadistica-card mesas-activas">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Mesas Activas</h3>
+              <div class="estadistica-valor" id="mesasActivas">0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-chair"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <span id="textoMesas">mesas ocupadas</span>
+          </div>
+        </div>
+
+        <div class="estadistica-card pedidos-pendientes">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Pedidos Pendientes</h3>
+              <div class="estadistica-valor" id="pedidosPendientes">0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <span>por atender</span>
+          </div>
+        </div>
+
+        <div class="estadistica-card propina-estimada">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Propina Estimada</h3>
+              <div class="estadistica-valor" id="propinaEstimada">$0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia tendencia-positiva">
+            <i class="fas fa-percentage"></i>
+            <span>10% estimado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="acciones-grid">
+        <h2 class="seccion-titulo">
+          <i class="fas fa-bolt"></i>
+          Acciones Rápidas
+        </h2>
+        
+        <div class="acciones-container">
+          <button class="accion-card principal" onclick="window.location.href='../mesas_y_pedidos/mesas_y_pedidos.html'">
+            <div class="accion-icon">
+              <i class="fas fa-plus-circle"></i>
+            </div>
+            <div class="accion-content">
+              <h3>Tomar Nuevo Pedido</h3>
+              <p>Agregar productos a una mesa y enviar a cocina</p>
+            </div>
+            <div class="accion-badge">NUEVO</div>
+          </button>
+
+          <button class="accion-card" onclick="window.location.href='../mesas_y_pedidos/mesas_y_pedidos.html#pendientes'">
+            <div class="accion-icon">
+              <i class="fas fa-list-check"></i>
+            </div>
+            <div class="accion-content">
+              <h3>Ver Pedidos Pendientes</h3>
+              <p>Revisar y gestionar pedidos en proceso</p>
+            </div>
+            <div class="accion-badge" id="badgePendientes">0</div>
+          </button>
+
+          <button class="accion-card" onclick="window.location.href='../facturacion/facturacion.html'">
+            <div class="accion-icon">
+              <i class="fas fa-cash-register"></i>
+            </div>
+            <div class="accion-content">
+              <h3>Facturar Mesa</h3>
+              <p>Generar factura y cerrar cuenta</p>
+            </div>
+            <div class="accion-badge" id="badgeMesas">0</div>
+          </button>
+
+          <button class="accion-card" onclick="window.location.href='../reservas/reservas.html'">
+            <div class="accion-icon">
+              <i class="fas fa-calendar-plus"></i>
+            </div>
+            <div class="accion-content">
+              <h3>Gestionar Reservas</h3>
+              <p>Confirmar o registrar nuevas reservas</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="mesas-grid">
+        <div class="mesas-header">
+          <h2>
+            <i class="fas fa-table-cells"></i>
+            Estado de Mesas
+          </h2>
+          <div class="contador-mesas">
+            <span class="mesa-libre">Libres: <strong id="mesasLibres">0</strong></span>
+            <span class="mesa-ocupada">Ocupadas: <strong id="mesasOcupadas">0</strong></span>
+            <span class="mesa-reservada">Reservadas: <strong id="mesasReservadas">0</strong></span>
+          </div>
+        </div>
+        
+        <div class="mesas-container" id="mesasContainer">
+          <div class="cargando-mesas">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Cargando estado de mesas...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pedidos-card">
+        <div class="pedidos-header">
+          <h2>
+            <i class="fas fa-history"></i>
+            Pedidos Recientes
+          </h2>
+          <button class="btn-refresh" onclick="cargarPedidosRecientes()">
+            <i class="fas fa-sync-alt"></i>
+            Actualizar
+          </button>
+        </div>
+        <div class="lista-pedidos" id="listaPedidos">
+          <div class="item-pedido" style="text-align: center; padding: 30px;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 24px; color: var(--accent-color);"></i>
+            <p style="margin-top: 10px; color: var(--text-light);">Cargando pedidos...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-footer">
+        <p>© 2024 El Gusto Marino - Sistema de Gestión Restaurante | Mesero v2.1 | 
+          <span id="horaActual"></span> | 
+          <span class="estado-servidor">
+            <i class="fas fa-circle" style="color: var(--success-color);"></i>
+            Servidor conectado
+          </span>
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script src="loadSidebar.js"></script>
+  <script>
+    
+    // Fecha actual
+    const fecha = new Date();
+    const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('fechaHoy').textContent = fecha.toLocaleDateString('es-ES', opciones);
+    
+    // Hora actual
+    function actualizarHora() {
+      const ahora = new Date();
+      document.getElementById('horaActual').textContent = 
+        `Hora actual: ${ahora.toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'})}`;
+    }
+    actualizarHora();
+    setInterval(actualizarHora, 60000);
+    
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.sidebar').classList.toggle('active');
+    });
+    
+    function marcarActivoSidebar() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.sidebar button[data-target]').forEach(btn => {
+        const target = btn.getAttribute('data-target');
+        if (target.includes(currentPage)) {
+          btn.classList.add('active');
+        }
+      });
+    }
+    
+    // estadísticas mesero
+    async function cargarEstadisticasMesero() {
+      try {
+        const response = await fetch('api/estadisticas_mesero.php');
+        const data = await response.json();
+        
+        if (data.success) {
+          // Actualizar principales
+          document.getElementById('ventasTurno').textContent = `$${data.ventas_turno}`;
+          document.getElementById('mesasActivas').textContent = data.mesas_activas;
+          document.getElementById('pedidosPendientes').textContent = data.pedidos_pendientes;
+          document.getElementById('propinaEstimada').textContent = `$${data.propina_estimada}`;
+          
+          // Actualizar acciones rápidas
+          document.getElementById('badgePendientes').textContent = data.pedidos_pendientes;
+          document.getElementById('badgeMesas').textContent = data.mesas_activas;
+          
+          // Actualizar texto dinámico
+          const textoMesas = document.getElementById('textoMesas');
+          if (data.mesas_activas == 0) {
+            textoMesas.textContent = 'Todas las mesas libres';
+            textoMesas.style.color = 'var(--success-color)';
+          } else {
+            textoMesas.textContent = `${data.mesas_activas} mesas ocupadas`;
+            textoMesas.style.color = 'var(--warning-color)';
+          }
+          
+          // Actualizar tendencia del turno
+          const tendenciaTurno = document.getElementById('tendenciaTurno');
+          if (parseFloat(data.ventas_turno) > 0) {
+            tendenciaTurno.innerHTML = '<i class="fas fa-arrow-up"></i> <span>Turno productivo</span>';
+            tendenciaTurno.className = 'estadistica-tendencia tendencia-positiva';
+          } else {
+            tendenciaTurno.innerHTML = '<i class="fas fa-info-circle"></i> <span>Sin ventas aún</span>';
+            tendenciaTurno.className = 'estadistica-tendencia';
+          }
+          
+          actualizarEstadoMesas(data.mesas);
+          actualizarPedidosRecientes(data.pedidos_recientes);
+          
+        } else {
+          console.error('Error en respuesta:', data.error);
+          mostrarValoresPorDefecto();
+        }
+        
+      } catch (error) {
+        console.error('Error cargando estadísticas:', error);
+        mostrarValoresPorDefecto();
+      }
+    }
+    
+    function mostrarValoresPorDefecto() {
+      document.querySelectorAll('.estadistica-valor').forEach(el => {
+        el.textContent = el.textContent.includes('$') ? '$0' : '0';
+      });
+      document.getElementById('listaPedidos').innerHTML = 
+        '<div class="item-pedido" style="text-align: center; padding: 20px;">' +
+        '<p style="color: var(--error-color);">Error cargando pedidos</p></div>';
+    }
+    
+    function actualizarEstadoMesas(mesasData) {
+      const mesasContainer = document.getElementById('mesasContainer');
+      
+      if (!mesasData || mesasData.length === 0) {
+        mesasContainer.innerHTML = `
+          <div class="cargando-mesas">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>No se pudieron cargar las mesas</p>
+          </div>
+        `;
+        return;
+      }
+      
+      let libres = 0, ocupadas = 0, reservadas = 0;
+      let html = '';
+      mesasData.forEach(mesa => {
+        let claseEstado = '';
+        let icono = '';
+        let textoEstado = '';
+        let accion = '';
+        
+        switch(mesa.estado) {
+          case 'libre':
+            claseEstado = 'mesa-libre';
+            icono = 'fa-check-circle';
+            textoEstado = 'Libre';
+            accion = 'Tomar pedido';
+            libres++;
+            break;
+          case 'ocupada':
+            claseEstado = 'mesa-ocupada';
+            icono = 'fa-users';
+            textoEstado = 'Ocupada';
+            accion = 'Ver pedido';
+            ocupadas++;
+            break;
+          case 'reservada':
+            claseEstado = 'mesa-reservada';
+            icono = 'fa-calendar';
+            textoEstado = 'Reservada';
+            accion = 'Ver reserva';
+            reservadas++;
+            break;
+        }
+        
+        // Determina piso y ubicación
+        let infoExtra = '';
+        if (mesa.piso === '2') {
+          infoExtra += '<span class="mesa-piso"><i class="fas fa-mountain"></i> 2° Piso</span>';
+        }
+        if (mesa.ubicacion_especial === 'balcon') {
+          infoExtra += '<span class="mesa-balcon"><i class="fas fa-umbrella"></i> Balcón</span>';
+        }
+        
+        html += `
+          <div class="mesa-card ${claseEstado}" onclick="abrirMesa(${mesa.numero_mesa})">
+            <div class="mesa-header">
+              <div class="mesa-numero">
+                <span class="numero">${mesa.numero_mesa}</span>
+                <span class="estado ${claseEstado}">
+                  <i class="fas ${icono}"></i>
+                  ${textoEstado}
+                </span>
+              </div>
+              <div class="mesa-info">
+                ${infoExtra}
+              </div>
+            </div>
+            <div class="mesa-accion">
+              <i class="fas fa-arrow-right"></i>
+              ${accion}
+            </div>
+          </div>
+        `;
+      });
+      
+      document.getElementById('mesasLibres').textContent = libres;
+      document.getElementById('mesasOcupadas').textContent = ocupadas;
+      document.getElementById('mesasReservadas').textContent = reservadas;
+      
+      mesasContainer.innerHTML = html;
+    }
+    
+    // Función para actualizar pedidos recientes
+    function actualizarPedidosRecientes(pedidos) {
+      const listaPedidos = document.getElementById('listaPedidos');
+      
+      if (!pedidos || pedidos.length === 0) {
+        listaPedidos.innerHTML = `
+          <div class="item-pedido" style="text-align: center; padding: 30px;">
+            <i class="fas fa-info-circle" style="font-size: 24px; color: var(--text-light);"></i>
+            <p style="margin-top: 10px; color: var(--text-light);">No hay pedidos recientes</p>
+          </div>
+        `;
+        return;
+      }
+      
+      let html = '';
+      pedidos.forEach(pedido => {
+        let claseEstado = '';
+        let iconoEstado = '';
+        
+        switch(pedido.estado) {
+          case 'pendiente':
+            claseEstado = 'estado-pendiente';
+            iconoEstado = 'fa-clock';
+            break;
+          case 'servido':
+            claseEstado = 'estado-servido';
+            iconoEstado = 'fa-check';
+            break;
+          case 'facturado':
+            claseEstado = 'estado-facturado';
+            iconoEstado = 'fa-receipt';
+            break;
+        }
+        
+        // Calcular tiempo relativo
+        const fechaPedido = new Date(pedido.fecha_pedido);
+        const ahora = new Date();
+        const diferencia = Math.floor((ahora - fechaPedido) / (1000 * 60));
+        
+        let tiempoRelativo = '';
+        if (diferencia < 1) {
+          tiempoRelativo = 'Ahora mismo';
+        } else if (diferencia < 60) {
+          tiempoRelativo = `Hace ${diferencia} min`;
+        } else {
+          tiempoRelativo = fechaPedido.toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        html += `
+          <div class="item-pedido">
+            <div class="pedido-info">
+              <div class="pedido-header">
+                <h4>Mesa ${pedido.mesa}</h4>
+                <span class="pedido-estado ${claseEstado}">
+                  <i class="fas ${iconoEstado}"></i>
+                  ${pedido.estado}
+                </span>
+              </div>
+              <p class="pedido-desc">${pedido.descripcion}</p>
+              <div class="pedido-detalle">
+                <span class="pedido-cantidad">${pedido.cantidad}x</span>
+                <span class="pedido-total">$${pedido.total}</span>
+              </div>
+            </div>
+            <div class="pedido-hora">
+              ${tiempoRelativo}
+            </div>
+          </div>
+        `;
+      });
+      
+      listaPedidos.innerHTML = html;
+    }
+    
+    // Función para recargar pedidos recientes
+    function cargarPedidosRecientes() {
+      const btnRefresh = document.querySelector('.btn-refresh');
+      btnRefresh.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Actualizando...';
+      btnRefresh.disabled = true;
+      
+      setTimeout(() => {
+        cargarEstadisticasMesero();
+        btnRefresh.innerHTML = '<i class="fas fa-sync-alt"></i> Actualizar';
+        btnRefresh.disabled = false;
+      }, 1000);
+    }
+    
+    // Función para abrir una mesa específica
+    function abrirMesa(numeroMesa) {
+      window.location.href = `../mesas_y_pedidos/mesas_y_pedidos.html?mesa=${numeroMesa}`;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      cargarSidebar("mesero");
+      setTimeout(() => {
+        marcarActivoSidebar();
+        cargarEstadisticasMesero();
+        setInterval(cargarEstadisticasMesero, 30000);
+      }, 500);
+    });
+  </script>
+</body>
+</html>

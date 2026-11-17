@@ -1,0 +1,471 @@
+{
+    "fecha_ejecucion": "2026-11-17 20:02:47",
+    "entorno": {
+        "php_version": "8.0.30",
+        "mysql_version": "10.4.32-MariaDB",
+        "database": "gusto_marino"
+    },
+    "resumen": {
+        "total": 61,
+        "aprobadas": 61,
+        "fallidas": 0,
+        "tiempo_total_ms": 225.0499999999999
+    },
+    "por_tipo": {
+        "Unitarias": {
+            "total": 28,
+            "aprobadas": 28,
+            "fallidas": 0,
+            "items": [
+                {
+                    "id": "CPU-01",
+                    "nombre": "Verificación de clave bcrypt para usuario admin",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 46.72,
+                    "detalles": "Hash bcrypt de admin verificado"
+                },
+                {
+                    "id": "CPU-02",
+                    "nombre": "Rechazo de acceso con contraseña incorrecta de admin",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 45.73,
+                    "detalles": "Contraseña inválida rechazada correctamente"
+                },
+                {
+                    "id": "CPU-03",
+                    "nombre": "Verificación de clave bcrypt para usuario mesero",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 46.15,
+                    "detalles": "Hash bcrypt de mesero verificado"
+                },
+                {
+                    "id": "CPU-04",
+                    "nombre": "Rechazo de acceso con contraseña incorrecta de mesero",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 46.95,
+                    "detalles": "Contraseña inválida de mesero rechazada"
+                },
+                {
+                    "id": "CPU-05",
+                    "nombre": "Validación de usuario no vacío en formulario de login",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.01,
+                    "detalles": "Usuario en blanco detectado como inválido"
+                },
+                {
+                    "id": "CPU-06",
+                    "nombre": "Disponibilidad del método ApiResponse::success",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.01,
+                    "detalles": "Método ApiResponse::success disponible"
+                },
+                {
+                    "id": "CPU-07",
+                    "nombre": "Disponibilidad del método ApiResponse::error",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Método ApiResponse::error disponible"
+                },
+                {
+                    "id": "CPU-08",
+                    "nombre": "Código HTTP 400 para solicitudes incorrectas",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Código de cliente 400 verificado"
+                },
+                {
+                    "id": "CPU-09",
+                    "nombre": "Disponibilidad del método ApiResponse::unauthorized",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Método ApiResponse::unauthorized disponible"
+                },
+                {
+                    "id": "CPU-10",
+                    "nombre": "Disponibilidad del método ApiResponse::forbidden",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Método ApiResponse::forbidden disponible"
+                },
+                {
+                    "id": "CPU-11",
+                    "nombre": "Cálculo de precio individual de Ceviche Clásico",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Total individual 38.00 correcto"
+                },
+                {
+                    "id": "CPU-12",
+                    "nombre": "Cálculo de total para 2 porciones de Lomo Saltado",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Total 2 porciones 70.00 correcto"
+                },
+                {
+                    "id": "CPU-13",
+                    "nombre": "Cálculo de comanda mixta de plato y bebida",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Total comanda mixta 52.00 correcto"
+                },
+                {
+                    "id": "CPU-14",
+                    "nombre": "Cálculo de importe para 3 bebidas Inka Kola",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Total 3 gaseosas 18.00 correcto"
+                },
+                {
+                    "id": "CPU-15",
+                    "nombre": "Cálculo de comanda completa de 3 tiempos",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Total mesa grande 136.00 correcto"
+                },
+                {
+                    "id": "CPU-16",
+                    "nombre": "Deducción de pescado para 1 ceviche: 0.25 kg",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Dosis de pescado 0.25 kg"
+                },
+                {
+                    "id": "CPU-17",
+                    "nombre": "Deducción de pescado para 4 ceviches: 1.00 kg",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Dosis acumulada 1.00 kg"
+                },
+                {
+                    "id": "CPU-18",
+                    "nombre": "Deducción de limón sutil para 2 ceviches: 0.30 kg",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Dosis de limón 0.30 kg"
+                },
+                {
+                    "id": "CPU-19",
+                    "nombre": "Deducción de lomo fino para 2 lomos: 0.50 kg",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Dosis de carne 0.50 kg"
+                },
+                {
+                    "id": "CPU-20",
+                    "nombre": "Deducción de pisco quebranta para 2 pisco sour: 0.16 botellas",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Dosis de pisco 0.16 botellas"
+                },
+                {
+                    "id": "CPU-21",
+                    "nombre": "Aceptación de cantidad numérica entera positiva",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Cantidad 1 aceptada"
+                },
+                {
+                    "id": "CPU-22",
+                    "nombre": "Rechazo de cantidad igual a cero en comanda",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Cantidad 0 bloqueada"
+                },
+                {
+                    "id": "CPU-23",
+                    "nombre": "Rechazo de cantidad negativa en comanda",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Cantidad negativa bloqueada"
+                },
+                {
+                    "id": "CPU-24",
+                    "nombre": "Rechazo de cantidad alfanumérica no válida",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Cadena de texto bloqueada"
+                },
+                {
+                    "id": "CPU-25",
+                    "nombre": "Rechazo de comanda sin mesa asignada",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Mesas vacías detectadas"
+                },
+                {
+                    "id": "CPU-26",
+                    "nombre": "Aceptación de fecha de reserva futura",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.29,
+                    "detalles": "Fecha 2026-11-20 aceptada"
+                },
+                {
+                    "id": "CPU-27",
+                    "nombre": "Rechazo de fecha de reserva anterior a hoy",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.01,
+                    "detalles": "Fecha pasada 2026-11-16 rechazada"
+                },
+                {
+                    "id": "CPU-28",
+                    "nombre": "Validación de rango de personas para reserva",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0,
+                    "detalles": "Capacidad para 4 comensales válida"
+                }
+            ]
+        },
+        "Integracion": {
+            "total": 15,
+            "aprobadas": 15,
+            "fallidas": 0,
+            "items": [
+                {
+                    "id": "CPI-01",
+                    "nombre": "Integración Comanda y Ocupación de Mesa 1",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 2.26,
+                    "detalles": "Mesa 1 actualizada a ocupada"
+                },
+                {
+                    "id": "CPI-02",
+                    "nombre": "Integración Comanda y Ocupación de Mesa 2",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 2.55,
+                    "detalles": "Mesa 2 actualizada a ocupada"
+                },
+                {
+                    "id": "CPI-03",
+                    "nombre": "Integración Comanda y Descuento de Pescado",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.69,
+                    "detalles": "Stock pescado reducido 0.50 kg"
+                },
+                {
+                    "id": "CPI-04",
+                    "nombre": "Integración Comanda y Descuento de Gaseosas",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.4,
+                    "detalles": "Stock Inka Kola reducido 2 botellas"
+                },
+                {
+                    "id": "CPI-05",
+                    "nombre": "Integración Comanda Mixta de Cocina y Bar",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.21,
+                    "detalles": "Deducción atómica cocina y bar ejecutada"
+                },
+                {
+                    "id": "CPI-06",
+                    "nombre": "Integración Facturación y Estado Facturado",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.77,
+                    "detalles": "Estado cambiado a facturado"
+                },
+                {
+                    "id": "CPI-07",
+                    "nombre": "Integración Facturación y Liberación de Mesa 1",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.19,
+                    "detalles": "Mesa 1 liberada con éxito"
+                },
+                {
+                    "id": "CPI-08",
+                    "nombre": "Integración Facturación y Liberación Múltiple",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.32,
+                    "detalles": "Mesas 7 y 8 liberadas en bloque"
+                },
+                {
+                    "id": "CPI-09",
+                    "nombre": "Integración de Registro de Reserva y Persistencia",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.41,
+                    "detalles": "Reserva persistida con ID autoincremental 7"
+                },
+                {
+                    "id": "CPI-10",
+                    "nombre": "Integración de Reserva en Zona Especial de Balcón",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.25,
+                    "detalles": "Mesa balcón identificada número 9"
+                },
+                {
+                    "id": "CPI-11",
+                    "nombre": "Integración de Consulta y Filtro de Platillos",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.2,
+                    "detalles": "Se recuperaron 5 platillos de cocina"
+                },
+                {
+                    "id": "CPI-12",
+                    "nombre": "Integración de Consulta y Filtro de Bebidas",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.15,
+                    "detalles": "Se recuperaron 7 bebidas de bar"
+                },
+                {
+                    "id": "CPI-13",
+                    "nombre": "Integración de Consulta y Filtro de Postres",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.17,
+                    "detalles": "Se recuperaron 3 postres tradicionales"
+                },
+                {
+                    "id": "CPI-14",
+                    "nombre": "Integración de Consulta de Perfil Administrador",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.18,
+                    "detalles": "Rol administrador confirmado"
+                },
+                {
+                    "id": "CPI-15",
+                    "nombre": "Integración de Consulta de Perfil Mesero",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.17,
+                    "detalles": "Rol mesero confirmado"
+                }
+            ]
+        },
+        "Sistema": {
+            "total": 8,
+            "aprobadas": 8,
+            "fallidas": 0,
+            "items": [
+                {
+                    "id": "CPS-01",
+                    "nombre": "Ciclo Completo E2E Salón Primer Piso",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.77,
+                    "detalles": "Ciclo primer piso completado"
+                },
+                {
+                    "id": "CPS-02",
+                    "nombre": "Ciclo Completo E2E Salón Segundo Piso",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.94,
+                    "detalles": "Ciclo segundo piso completado"
+                },
+                {
+                    "id": "CPS-03",
+                    "nombre": "Ciclo Completo E2E Salón Balcón",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.67,
+                    "detalles": "Ciclo balcón completado"
+                },
+                {
+                    "id": "CPS-04",
+                    "nombre": "Rendimiento y Latencia de Catálogo de Menú",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 6.82,
+                    "detalles": "Latencia media catálogo: 0.14 ms (Meta < 10 ms)"
+                },
+                {
+                    "id": "CPS-05",
+                    "nombre": "Rendimiento y Latencia de Estado de Mesas",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 5.71,
+                    "detalles": "Latencia media mesas: 0.11 ms (Meta < 10 ms)"
+                },
+                {
+                    "id": "CPS-06",
+                    "nombre": "Seguridad contra SQL Injection en Login",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.26,
+                    "detalles": "Inyección en login neutralizada"
+                },
+                {
+                    "id": "CPS-07",
+                    "nombre": "Seguridad contra SQL Injection en Menú",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.19,
+                    "detalles": "Inyección en menú bloqueada"
+                },
+                {
+                    "id": "CPS-08",
+                    "nombre": "Tolerancia a Fallos y Reversión Atómica ACID",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.15,
+                    "detalles": "Rollback completado con 0 registros huérfanos"
+                }
+            ]
+        },
+        "Aceptacion": {
+            "total": 10,
+            "aprobadas": 10,
+            "fallidas": 0,
+            "items": [
+                {
+                    "id": "CPA-01",
+                    "nombre": "Velocidad de Registro de Comanda de 4 Productos",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 1.31,
+                    "detalles": "Registro en 0.52 ms (Meta < 50 ms)"
+                },
+                {
+                    "id": "CPA-02",
+                    "nombre": "Velocidad de Consulta de Precuenta en Caja",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.25,
+                    "detalles": "Precuenta devuelta en 0.24 ms"
+                },
+                {
+                    "id": "CPA-03",
+                    "nombre": "Integridad de Catálogo con 15 Productos Válidos",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.16,
+                    "detalles": "Catálogo verificado: 15 productos con precios mayores a cero"
+                },
+                {
+                    "id": "CPA-04",
+                    "nombre": "Distribución de 6 Mesas en Salón Primer Piso",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.14,
+                    "detalles": "Se confirmaron 6 mesas en Piso 1"
+                },
+                {
+                    "id": "CPA-05",
+                    "nombre": "Distribución de 6 Mesas en Salón Segundo Piso",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.13,
+                    "detalles": "Se confirmaron 6 mesas en Piso 2"
+                },
+                {
+                    "id": "CPA-06",
+                    "nombre": "Disponibilidad de 3 Mesas en Balcón",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.14,
+                    "detalles": "Se confirmaron 3 mesas en Balcón"
+                },
+                {
+                    "id": "CPA-07",
+                    "nombre": "Disponibilidad de Insumos Críticos de Carnes",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.15,
+                    "detalles": "Carnes en almacén verificadas con existencias positivas"
+                },
+                {
+                    "id": "CPA-08",
+                    "nombre": "Disponibilidad de Insumos Críticos de Bebidas",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.13,
+                    "detalles": "Bebidas en almacén verificadas con existencias positivas"
+                },
+                {
+                    "id": "CPA-09",
+                    "nombre": "Integridad de Recetas Técnicas Asociadas",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.14,
+                    "detalles": "Se confirmaron 6 platillos con recetas configuradas"
+                },
+                {
+                    "id": "CPA-10",
+                    "nombre": "Consistencia Financiera en Consultas de Caja",
+                    "estado": "SUPERADO",
+                    "tiempo_ms": 0.2,
+                    "detalles": "Balance de ventas procesado sin inconsistencias numéricas"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mesas y Pedidos - El Gusto Marino</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../Dashboard/dashboard.css">
+  <link rel="stylesheet" href="mesas_y_pedidos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/auth-guard.js" data-role="mesero,administrador"></script>
+</head>
+
+<body>
+  <div class="ocean-bg">
+    <div class="dashboard-layout">
+      <aside id="sidebar"></aside>
+
+      <main class="main-content">
+        <h1>Cartilla <span>Menú</span></h1>
+        
+        <section class="categorias">
+          <button class="tab active" data-cat="platillo">Platillos</button>
+          <button class="tab" data-cat="bebida">Bebidas</button>
+          <button class="tab" data-cat="postre">Postres</button>
+        </section>
+        
+        <div id="contenedor-productos" class="productos-grid"></div>
+
+        <aside class="pedido-actual">
+          <h1>Carrito <span>de Compra</span></h1>
+
+          <input type="text" 
+                 id="nombreCliente" 
+                 placeholder="Nombre del cliente" 
+                 required
+                 autocomplete="off">
+
+          <div class="seleccion-mesas">
+            <h3>Seleccionar Mesas (máx. 3)</h3>
+            <div id="contenedor-mesas" class="mesas-grid"></div>
+            <p id="mensajeMesas"></p>
+          </div>
+
+          <p id="mensajeCliente"></p>
+
+          <table id="tablaPedido">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cant.</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <div class="total">
+            <strong>Total: S/ <span id="totalPedido">0.00</span></strong>
+          </div>
+
+          <button id="btnGuardarPedido" class="btn-agregar">
+            <i class="fas fa-save"></i> Guardar Pedido
+          </button>
+        </aside>
+      </main>
+    </div>
+  </div>
+  <script src="../Dashboard/loadSidebar.js"></script>
+  <script>
+    cargarSidebar("mesero");
+  </script>
+  <script src="mesas_y_pedidos.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Gusto Marino &bull; Sistema de Restaurante & POS</title>
+  
+  <!-- Tipografía Gastronómica de Lujo Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Iconos FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Estilos del Login Gastronómico -->
+  <link rel="stylesheet" href="login.css">
+</head>
+<body class="restaurant-body">
+
+  <!-- FONDO ESTÁTICO: FOTOGRAFÍA GASTRONÓMICA AL 100% DE RESOLUCIÓN Y MÁXIMA FLUIDEZ -->
+  <div class="restaurant-bg-static" aria-hidden="true"></div>
+
+  <!-- Capa sutil de oscurecimiento ambiental y calidez de salón -->
+  <div class="restaurant-vignette"></div>
+
+  <!-- CONTENEDOR CENTRAL: TARJETA FLOTANTE DE ACCESO AL RESTAURANTE -->
+  <main class="login-center-wrapper">
+    <div class="restaurant-card" id="restaurantCard">
+      
+      <!-- Cabecera de la Marca y Salón -->
+      <header class="restaurant-header">
+        <div class="brand-crest">
+          <div class="crest-glow"></div>
+          <div class="crest-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+        </div>
+
+        <span class="restaurant-pill-tag">SISTEMA GASTRONÓMICO &bull; SALONES Y MESAS</span>
+        <h1 class="restaurant-title">El Gusto Marino</h1>
+        <p class="restaurant-tagline">Cevichería, Parrillas & Cocina Tradicional</p>
+      </header>
+
+      <!-- Selector Rápido de Perfil (Administrador / Salón) -->
+      <div class="role-selector-bar" role="group" aria-label="Selección rápida de perfil de acceso">
+        <button type="button" class="btn-role-tab" data-user="admin" data-pass="admin123" id="roleBtnAdmin">
+          <i class="fas fa-crown"></i>
+          <div class="tab-text">
+            <strong>Administración</strong>
+            <span>Control Total & Caja</span>
+          </div>
+        </button>
+
+        <button type="button" class="btn-role-tab" data-user="mesero" data-pass="mesero123" id="roleBtnMesero">
+          <i class="fas fa-bell-concierge"></i>
+          <div class="tab-text">
+            <strong>Personal Salón</strong>
+            <span>Mesas & Comandas</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Formulario de Acceso -->
+      <form id="loginForm" class="restaurant-form" novalidate autocomplete="off">
+        
+        <!-- Campo Usuario -->
+        <div class="form-field-group">
+          <label for="usuario" class="field-label">
+            <span>Usuario o Identificador</span>
+          </label>
+          <div class="field-input-box">
+            <span class="field-icon-left" aria-hidden="true">
+              <i class="fas fa-user-circle"></i>
+            </span>
+            <input 
+              type="text" 
+              id="usuario" 
+              name="usuario" 
+              class="restaurant-input" 
+              placeholder="Ingresa tu usuario (ej. admin o mesero)" 
+              required 
+              autocomplete="username"
+              spellcheck="false"
+              autocapitalize="none"
+            >
+          </div>
+        </div>
+
+        <!-- Campo Contraseña -->
+        <div class="form-field-group">
+          <div class="label-split">
+            <label for="password" class="field-label">
+              <span>Contraseña de Acceso</span>
+            </label>
+          </div>
+          <div class="field-input-box">
+            <span class="field-icon-left" aria-hidden="true">
+              <i class="fas fa-lock"></i>
+            </span>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="restaurant-input password-input" 
+              placeholder="••••••••••••" 
+              required 
+              autocomplete="current-password"
+              spellcheck="false"
+            >
+            <button 
+              type="button" 
+              class="btn-eye-toggle" 
+              id="togglePassword" 
+              aria-label="Ver u ocultar contraseña"
+              aria-pressed="false"
+            >
+              <i class="fas fa-eye" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Recordar Sesión -->
+        <div class="options-row">
+          <label class="remember-checkbox">
+            <input type="checkbox" id="rememberMe">
+            <span class="custom-check-box">
+              <i class="fas fa-check"></i>
+            </span>
+            <span class="check-text">Recordar usuario en este terminal</span>
+          </label>
+        </div>
+
+        <!-- Botón de Ingreso al Sistema -->
+        <button type="submit" class="btn-restaurant-submit" id="btnSubmit">
+          <span class="btn-label-normal">
+            <span>Ingresar al Restaurante</span>
+            <i class="fas fa-arrow-right"></i>
+          </span>
+          <span class="btn-label-loading" aria-hidden="true">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <span>Verificando credenciales...</span>
+          </span>
+        </button>
+
+      </form>
+
+      <!-- Alerta / Mensaje de Estado -->
+      <div id="mensaje" class="restaurant-alert" role="alert" aria-live="polite"></div>
+
+      <!-- Footer del Card -->
+      <footer class="restaurant-card-footer">
+        <div class="footer-details">
+          <span><i class="fas fa-map-marker-alt"></i> Sede Los Olivos &bull; Lima</span>
+          <a href="https://wa.me/51965256964?text=Hola,%20solicito%20soporte%20del%20sistema%20Gusto%20Marino" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="whatsapp-link">
+            <i class="fab fa-whatsapp"></i> Soporte
+          </a>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Lógica de Inicio de Sesión y Control de Roles -->
+  <script src="login.js"></script>
+</body>
+</html>

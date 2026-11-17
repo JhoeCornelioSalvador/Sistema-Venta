@@ -1,0 +1,515 @@
+/**
+ * Estilos del Login Gastronomico - El Gusto Marino
+ * Paleta Rústica Artesanal (Carbón Neutro Cálido, Terracota & Crema Marfil)
+ * - Cero predominancia azul
+ * - Fondo neutro balanceado con acento terracota orgánico
+ */
+
+:root {
+  /* Paleta Rústica */
+  --c-terracota: #C85D45;
+  --c-terracota-hover: #D76B53;
+  --c-terracota-dark: #A94A34;
+  --c-madera: #9B6C4F;
+  --c-marfil: #EDE8DF;
+  --c-arena: #B5AEA4;
+
+  --accent-primary: var(--c-terracota);
+  --accent-hover: var(--c-terracota-hover);
+  --accent-glow: rgba(200, 93, 69, 0.32);
+
+  --bg-card: rgba(27, 28, 33, 0.88);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 35px rgba(200, 93, 69, 0.12);
+
+  --text-pure: #ffffff;
+  --text-light: #EDE8DF;
+  --text-muted: #B5AEA4;
+  --text-dim: #807A72;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  --radius-card: 20px;
+  --radius-input: 10px;
+  --radius-btn: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.restaurant-body {
+  font-family: var(--font-body);
+  background-color: #131417;
+  color: var(--text-pure);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== FONDO ESTATICO CON FOTOGRAFIA GASTRONOMICA ===== */
+.restaurant-bg-static {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-image: url('login-fondo/rustica_ambient.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: auto;
+}
+
+/* Vineta calida neutra (cero azul) */
+.restaurant-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(19, 20, 23, 0.45) 0%, rgba(10, 11, 13, 0.88) 100%);
+}
+
+/* ===== CONTENEDOR CENTRAL DE ACCESO ===== */
+.login-center-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 450px;
+}
+
+.restaurant-card {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 38px 36px 32px;
+  animation: cardFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== CABECERA DE LA MARCA ===== */
+.restaurant-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.brand-crest {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crest-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 93, 69, 0.3) 0%, transparent 70%);
+  filter: blur(10px);
+}
+
+.crest-icon {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #282A31 0%, #1A1B20 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--c-terracota);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.restaurant-card:hover .crest-icon {
+  transform: scale(1.05);
+  color: #ffffff;
+}
+
+.restaurant-pill-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #F19A86;
+  background: rgba(200, 93, 69, 0.16);
+  border: 1px solid rgba(200, 93, 69, 0.35);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.restaurant-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-pure);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  line-height: 1.15;
+}
+
+.restaurant-tagline {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ===== SELECTOR DE PERFIL ===== */
+.role-selector-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.btn-role-tab {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-input);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-body);
+}
+
+.btn-role-tab i {
+  font-size: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.tab-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.tab-text strong {
+  font-size: 12.5px;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.tab-text span {
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+
+.btn-role-tab:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 93, 69, 0.4);
+}
+
+.btn-role-tab.active {
+  background: rgba(200, 93, 69, 0.18);
+  border-color: var(--c-terracota);
+  box-shadow: 0 0 16px rgba(200, 93, 69, 0.25);
+}
+
+.btn-role-tab.active i {
+  color: var(--c-terracota);
+}
+
+.btn-role-tab.active .tab-text strong {
+  color: #ffffff;
+}
+
+/* ===== FORMULARIO Y CAMPOS ===== */
+.restaurant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+}
+
+.field-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon-left {
+  position: absolute;
+  left: 14px;
+  color: var(--text-dim);
+  font-size: 16px;
+  pointer-events: none;
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+
+.restaurant-input {
+  width: 100%;
+  height: 48px;
+  background: rgba(19, 20, 24, 0.75);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-input);
+  padding: 0 16px 0 44px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-pure);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.restaurant-input::placeholder {
+  color: var(--text-dim);
+}
+
+.restaurant-input:focus {
+  border-color: var(--c-terracota);
+  background: rgba(25, 26, 32, 0.95);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.field-input-box:focus-within .field-icon-left {
+  color: var(--c-terracota);
+}
+
+.btn-eye-toggle {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+
+.btn-eye-toggle:hover {
+  color: var(--text-pure);
+}
+
+/* Checkbox Recordarme */
+.options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.remember-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-checkbox input {
+  display: none;
+}
+
+.custom-check-box {
+  width: 17px;
+  height: 17px;
+  border-radius: 4px;
+  background: rgba(19, 20, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+
+.remember-checkbox input:checked + .custom-check-box {
+  background: var(--c-terracota);
+  border-color: var(--c-terracota);
+  color: #ffffff;
+}
+
+.check-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ===== BOTON PRINCIPAL (TERRACOTA GRADIENT) ===== */
+.btn-restaurant-submit {
+  width: 100%;
+  height: 50px;
+  margin-top: 8px;
+  background: linear-gradient(135deg, #C85D45 0%, #A94A34 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-btn);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(200, 93, 69, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.btn-restaurant-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #D76B53 0%, #C85D45 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(200, 93, 69, 0.55);
+}
+
+.btn-restaurant-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-restaurant-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-label-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-label-loading {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-restaurant-submit.loading .btn-label-normal {
+  display: none;
+}
+
+.btn-restaurant-submit.loading .btn-label-loading {
+  display: inline-flex;
+}
+
+/* ===== ALERTA DE MENSAJES ===== */
+.restaurant-alert {
+  display: none;
+  padding: 12px 16px;
+  border-radius: var(--radius-input);
+  font-size: 13px;
+  margin-top: 16px;
+  text-align: center;
+  animation: alertFadeIn 0.3s ease;
+}
+
+@keyframes alertFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.restaurant-alert.error {
+  display: block;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.restaurant-alert.success {
+  display: block;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #6ee7b7;
+}
+
+/* ===== FOOTER DEL CARD ===== */
+.restaurant-card-footer {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+.whatsapp-link {
+  color: #34d399;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.whatsapp-link:hover {
+  color: #6ee7b7;
+}
+
+/* Shake en error */
+.shake-animation {
+  animation: cardShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes cardShake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+@media (max-width: 480px) {
+  .restaurant-card {
+    padding: 30px 22px 24px;
+  }
+}

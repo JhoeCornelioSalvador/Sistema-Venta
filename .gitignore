@@ -1,0 +1,13 @@
+# Entornos y Credenciales
+.env
+.env.local
+*.log
+
+# Archivos temporales de sistema y pruebas MCP
+.DS_Store
+Thumbs.db
+.playwright-mcp/
+
+# IDEs
+.vscode/
+.idea/

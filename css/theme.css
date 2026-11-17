@@ -1,0 +1,342 @@
+/**
+ * Sistema de Diseno Gastronomico - El Gusto Marino
+ * Hoja Maestra de Identidad Visual Unificada
+ * Concepto: Rústica Artesanal (Carbón Neutro Cálido, Terracota & Crema Marfil)
+ * - Cero azul / cero celeste
+ * - Fondo neutro balanceado (regla 60-30-10 para que ningún color sature la pantalla)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  /* ===== PALETA RÚSTICA ARTESANAL ===== */
+  --c-terracota: #C85D45;
+  --c-terracota-hover: #D76B53;
+  --c-terracota-dark: #A94A34;
+  --c-madera: #9B6C4F;
+  --c-madera-hover: #B07C5D;
+  --c-marfil: #EDE8DF;
+  --c-arena: #B5AEA4;
+
+  /* ===== ACCESOS Y BOTONES PRINCIPALES ===== */
+  --accent-primary: var(--c-terracota);
+  --accent-hover: var(--c-terracota-hover);
+  --accent-dark: var(--c-terracota-dark);
+  --accent-glow: rgba(200, 93, 69, 0.32);
+
+  --accent-secondary: var(--c-madera);
+  --accent-secondary-hover: var(--c-madera-hover);
+  --accent-secondary-glow: rgba(155, 108, 79, 0.28);
+
+  /* ===== ESTADOS SEMANTICOS ===== */
+  --emerald-success: #10b981;
+  --emerald-dark: #059669;
+  --emerald-light: #34d399;
+  --emerald-glow: rgba(16, 185, 129, 0.25);
+
+  --crimson-danger: #ef4444;
+  --crimson-dark: #dc2626;
+  --crimson-light: #f87171;
+  --crimson-glow: rgba(239, 68, 68, 0.25);
+
+  --gold-warning: #d97706;
+  --gold-light: #fbbf24;
+
+  /* ===== SUPERFICIES (BASE NEUTRA CARBÓN CÁLIDO - CERO AZUL) ===== */
+  --bg-app: #131417;                   /* Fondo general carbón cálido neutro */
+  --bg-surface: #1B1C20;               /* Tarjetas y modales carbón */
+  --bg-surface-elevated: #24252B;      /* Superficie elevada / header */
+  --bg-card: #1F2025;                  /* Fondo de tarjetas */
+  --bg-card-hover: #272830;            /* Hover tarjetas */
+  --bg-input: #17181C;                 /* Fondo de inputs */
+  --bg-input-focus: #1F2025;           /* Focus de inputs */
+  --bg-sidebar: #16171B;               /* Fondo barra lateral */
+
+  /* ===== BORDES NÍTIDOS NEUTROS ===== */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-medium: rgba(255, 255, 255, 0.18);
+  --border-hover: var(--c-terracota);
+  --border-focus: var(--c-terracota);
+
+  /* ===== TEXTOS DE ALTO CONTRASTE (CREMA & ARENA) ===== */
+  --text-pure: #ffffff;
+  --text-primary: #EDE8DF;             /* Marfil crema suave para lectura confortable */
+  --text-secondary: #B5AEA4;           /* Arena pergamino */
+  --text-muted: #807A72;               /* Gris carbón suave */
+  --text-dim: #5C5750;
+
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ===== RADIOS & SOMBRAS ===== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.2);
+  --shadow-elevated: 0 20px 40px -10px rgba(0, 0, 0, 0.65), 0 0 20px rgba(200, 93, 69, 0.12);
+}
+
+/* ===== RESET & ESTILOS BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: var(--font-body);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Scrollbar neutro elegante */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: #2D2E35;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-terracota);
+}
+
+/* Tipografias */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-pure);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ===== TARJETA MAESTRA DE MODULO ===== */
+.module-card,
+.restaurant-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.module-card:hover,
+.restaurant-panel:hover {
+  border-color: rgba(200, 93, 69, 0.45);
+}
+
+/* ===== BADGES & PILL TAGS ===== */
+.badge-pill,
+.restaurant-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.badge-terracota,
+.badge-coral {
+  background: rgba(200, 93, 69, 0.16);
+  color: #F19A86;
+  border: 1px solid rgba(200, 93, 69, 0.38);
+}
+
+.badge-madera,
+.badge-ocean {
+  background: rgba(155, 108, 79, 0.2);
+  color: #D6B299;
+  border: 1px solid rgba(176, 124, 93, 0.35);
+}
+
+.badge-plum {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.badge-emerald {
+  background: rgba(16, 185, 129, 0.16);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+}
+
+.badge-crimson {
+  background: rgba(239, 68, 68, 0.16);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+}
+
+/* ===== FORMULARIOS & ENTRADAS ===== */
+.form-control,
+.input-restaurant,
+select.form-control,
+textarea.form-control {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-pure);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 11px 15px;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus,
+.input-restaurant:focus,
+select.form-control:focus,
+textarea.form-control:focus {
+  outline: none;
+  background: var(--bg-input-focus);
+  border-color: var(--c-terracota);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-control::placeholder,
+.input-restaurant::placeholder {
+  color: var(--text-muted);
+}
+
+select.form-control option {
+  background-color: var(--bg-surface);
+  color: var(--text-pure);
+}
+
+/* ===== BOTONES PRINCIPALES ===== */
+.btn-primary-gastronomico,
+.btn-marine {
+  background: linear-gradient(135deg, #C85D45 0%, #A94A34 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(200, 93, 69, 0.35);
+}
+
+.btn-primary-gastronomico:hover,
+.btn-marine:hover {
+  background: linear-gradient(135deg, #D76B53 0%, #C85D45 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 93, 69, 0.5);
+}
+
+.btn-primary-gastronomico:active,
+.btn-marine:active {
+  transform: translateY(0);
+}
+
+.btn-ocean,
+.btn-secondary-custom {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-ocean:hover,
+.btn-secondary-custom:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-danger-custom {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger-custom:hover {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.45);
+}
+
+/* ===== TABLAS GASTRONOMICAS ===== */
+.table-restaurant-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+}
+
+.table-restaurant {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table-restaurant th {
+  background: #191A1E;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.table-restaurant td {
+  padding: 14px 18px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.92rem;
+}
+
+.table-restaurant tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}

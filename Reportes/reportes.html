@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reportes - El Gusto Marino</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../Dashboard/dashboard.css">
+  <link rel="stylesheet" href="reportes.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <script src="../js/auth-guard.js" data-role="administrador"></script>
+</head>
+<body>
+  <div class="ocean-bg">
+    <div class="dashboard-layout">
+      <aside id="sidebar"></aside>
+
+      <main class="main-content">
+        <div class="reportes-container">
+          <div class="reportes-header">
+            <h1>Reportes Analíticos</h1>
+            <p class="subtitle">El Gusto Marino - Dashboard de Rendimiento</p>
+          </div>
+          <div class="filtros-card">
+            <h3>Panel de Control</h3>
+            <div class="filtros-grid">
+              <div class="filtro-group">
+                <label>Período de Tiempo</label>
+                <select id="filtroRango">
+                  <option value="hoy">Hoy</option>
+                  <option value="semana">Última Semana</option>
+                  <option value="mes" selected>Último Mes</option>
+                  <option value="personalizado">Rango Personalizado</option>
+                </select>
+              </div>
+
+              <div class="filtro-group">
+                <label>Categoría de Producto</label>
+                <select id="filtroCategoria">
+                  <option value="todas">Todas las Categorías</option>
+                  <option value="platillo">Platillos</option>
+                  <option value="bebida">Bebidas</option>
+                  <option value="postre">Postres</option>
+                </select>
+              </div>
+              <div class="filtro-group" id="rangoPersonalizado" style="display: none;">
+                <div style="display: contents;">
+                  <label>Fecha Inicial</label>
+                  <input type="date" id="fechaDesde">
+                </div>
+                <div style="display: contents;">
+                  <label>Fecha Final</label>
+                  <input type="date" id="fechaHasta">
+                </div>
+              </div>
+
+              <button id="btnAplicarFiltros" class="btn-filtrar">
+                Aplicar Filtros
+              </button>
+            </div>
+          </div>
+
+          <!-- Reporte -->
+          <section class="tabla-reporte">
+            <div class="tabla-header">
+              <h2>📈 Historial de Ventas</h2>
+              <div class="export-buttons">
+                <button class="btn-exportar" data-tabla="pedidos" data-formato="excel">
+                  📊 Excel
+                </button>
+                <button class="btn-exportar" data-tabla="pedidos" data-formato="pdf">
+                  📄 PDF
+                </button>
+              </div>
+            </div>
+            
+            <div class="tabla-container">
+              <table id="tablaPedidosPagados">
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unit.</th>
+                    <th>Total</th>
+                    <th>Categoría</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                  <tr class="total-row">
+                    <td colspan="5"><strong>Total General:</strong></td>
+                    <td colspan="2"><strong id="totalGeneral">S/ 0.00</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </section>
+
+          <!-- Reporte -->
+          <section class="tabla-reporte">
+            <div class="tabla-header">
+              <h2>🏆 Análisis de Productos</h2>
+              <div class="export-buttons">
+                <button class="btn-exportar" data-tabla="populares" data-formato="excel">
+                  📊 Excel
+                </button>
+                <button class="btn-exportar" data-tabla="populares" data-formato="pdf">
+                  📄 PDF
+                </button>
+              </div>
+            </div>
+            
+            <div class="tabla-container">
+              <table id="tablaPlatillosPopulares">
+                <thead>
+                  <tr>
+                    <th>Posición</th>
+                    <th>Producto</th>
+                    <th>Unidades Vendidas</th>
+                    <th>Ingresos Totales</th>
+                    <th>Participación</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../Dashboard/loadSidebar.js"></script>
+  <script src="reportes.js"></script>
+</body>
+</html>

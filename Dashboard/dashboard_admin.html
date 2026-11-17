@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador - El Gusto Marino</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../js/auth-guard.js" data-role="administrador"></script>
+</head>
+<body>
+  <div class="dashboard-layout">
+
+    <aside id="sidebar"></aside>
+
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <main class="main-content">
+      <div class="dashboard-header">
+        <div class="header-left">
+          <h1>¡Bienvenido, Administrador!</h1>
+          <p>Gestiona el menú, controla el inventario y supervisa las ventas de <strong>El Gusto Marino</strong>.</p>
+        </div>
+        <div class="header-right">
+          <div class="user-profile">
+            <div class="avatar">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="user-info">
+              <h4>Administrador</h4>
+              <p>Panel de Control</p>
+            </div>
+          </div>
+          <div class="fecha-actual">
+            <span id="fechaHoy"></span>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="estadisticas-grid">
+        <div class="estadistica-card ventas">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Ventas Hoy</h3>
+              <div class="estadistica-valor" id="ventasHoy">$0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia" id="tendenciaVentas">
+          </div>
+        </div>
+
+        <div class="estadistica-card inventario">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Inventario</h3>
+              <div class="estadistica-valor" id="inventarioBajo">0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-boxes"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <span id="textoInventario">productos bajos</span>
+          </div>
+        </div>
+
+        <div class="estadistica-card menu">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Platillos Activos</h3>
+              <div class="estadistica-valor" id="platillosActivos">0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <i class="fas fa-check"></i>
+            <span>En menú</span>
+          </div>
+        </div>
+
+        <div class="estadistica-card utilidad">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Utilidad Estimada</h3>
+              <div class="estadistica-valor" id="utilidadEstimada">$0</div>
+            </div>
+            <div class="estadistica-icon">
+              <i class="fas fa-coins"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia tendencia-positiva">
+            <i class="fas fa-percentage"></i>
+            <span>35% estimado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="estadisticas-grid" style="margin-top: 10px;">
+        <div class="estadistica-card" style="border-left-color: #3182ce;">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Mesas Ocupadas</h3>
+              <div class="estadistica-valor" id="mesasOcupadas">0</div>
+            </div>
+            <div class="estadistica-icon" style="background: #3182ce;">
+              <i class="fas fa-chair"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <span>de 12 totales</span>
+          </div>
+        </div>
+
+        <div class="estadistica-card" style="border-left-color: #dd6b20;">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Pedidos Pendientes</h3>
+              <div class="estadistica-valor" id="pedidosPendientes">0</div>
+            </div>
+            <div class="estadistica-icon" style="background: #dd6b20;">
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <span>por atender</span>
+          </div>
+        </div>
+
+        <div class="estadistica-card" style="border-left-color: #805ad5;">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Reservas Hoy</h3>
+              <div class="estadistica-valor" id="reservasHoy">0</div>
+            </div>
+            <div class="estadistica-icon" style="background: #805ad5;">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <span>confirmadas</span>
+          </div>
+        </div>
+
+        <div class="estadistica-card" style="border-left-color: #38a169;">
+          <div class="estadistica-header">
+            <div class="estadistica-titulo">
+              <h3>Total Insumos</h3>
+              <div class="estadistica-valor" id="totalInsumos">0</div>
+            </div>
+            <div class="estadistica-icon" style="background: #38a169;">
+              <i class="fas fa-layer-group"></i>
+            </div>
+          </div>
+          <div class="estadistica-tendencia">
+            <span>en inventario</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="accesos-grid">
+        <div class="acceso-card">
+          <div class="acceso-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <div class="acceso-content">
+            <h3>Gestionar Menú</h3>
+            <p>Agrega, edita o elimina platillos, bebidas y postres del menú. Controla precios y categorías.</p>
+            <button class="btn-acceso" data-target="../menu/menu.html">
+              <i class="fas fa-arrow-right"></i>
+              IR AL MENÚ
+            </button>
+          </div>
+        </div>
+
+        <div class="acceso-card">
+          <div class="acceso-icon">
+            <i class="fas fa-box-open"></i>
+          </div>
+          <div class="acceso-content">
+            <h3>Control de Inventario</h3>
+            <p>Revisa niveles de insumos, registra entradas y salidas, genera alertas de reposición.</p>
+            <button class="btn-acceso" data-target="../inventario/inventario.html">
+              <i class="fas fa-arrow-right"></i>
+              VER INVENTARIO
+            </button>
+          </div>
+        </div>
+
+        <div class="acceso-card">
+          <div class="acceso-icon">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="acceso-content">
+            <h3>Reportes y Análisis</h3>
+            <p>Visualiza métricas de ventas, utilidades, productos más vendidos y tendencias.</p>
+            <button class="btn-acceso" data-target="../reportes/reportes.html">
+              <i class="fas fa-arrow-right"></i>
+              VER REPORTES
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actividad-card">
+        <div class="actividad-header">
+          <h2><i class="fas fa-history"></i> Actividad Reciente</h2>
+          <button class="btn-ver-todo" onclick="window.location.href='../reportes/reportes.html'">Ver Reportes</button>
+        </div>
+        <div class="lista-actividad" id="listaActividad">
+          <div class="item-actividad" style="text-align: center; padding: 30px;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 24px; color: var(--accent-color);"></i>
+            <p style="margin-top: 10px; color: var(--text-light);">Cargando actividad...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-footer">
+        <p>© 2024 El Gusto Marino - Sistema de Gestión Restaurante | Dashboard v2.1 | <span id="horaActual"></span></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="loadSidebar.js"></script>
+  <script>
+    const fecha = new Date();
+    const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('fechaHoy').textContent = fecha.toLocaleDateString('es-ES', opciones);
+    
+    function actualizarHora() {
+      const ahora = new Date();
+      document.getElementById('horaActual').textContent = 
+        `Última actualización: ${ahora.toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'})}`;
+    }
+    actualizarHora();
+    setInterval(actualizarHora, 60000);
+    
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.querySelector('.sidebar').classList.toggle('active');
+    });
+    
+    document.querySelectorAll('.btn-acceso[data-target]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        window.location.href = this.getAttribute('data-target');
+      });
+    });
+    
+    function marcarActivoSidebar() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.sidebar button[data-target]').forEach(btn => {
+        const target = btn.getAttribute('data-target');
+        if (target.includes(currentPage)) {
+          btn.classList.add('active');
+        }
+      });
+    }
+    
+    // cargar estadísticas con api
+    async function cargarEstadisticasReales() {
+      try {
+        const response = await fetch('api/estadisticas.php');
+        const data = await response.json();
+        
+        // Actualizar p
+        document.getElementById('ventasHoy').textContent = `$${data.ventas_hoy}`;
+        document.getElementById('platillosActivos').textContent = data.platillos_activos;
+        document.getElementById('inventarioBajo').textContent = data.inventario_bajo;
+        document.getElementById('utilidadEstimada').textContent = `$${data.utilidad}`;
+        
+        // Actualizar s
+        document.getElementById('mesasOcupadas').textContent = data.mesas_ocupadas;
+        document.getElementById('pedidosPendientes').textContent = data.pedidos_pendientes;
+        document.getElementById('reservasHoy').textContent = data.reservas_hoy;
+        document.getElementById('totalInsumos').textContent = data.total_insumos;
+        
+        // Actualizar texto 
+        const textoInventario = document.getElementById('textoInventario');
+        if (data.inventario_bajo == 0) {
+          textoInventario.textContent = 'Todo en orden';
+          textoInventario.style.color = 'var(--success-color)';
+        } else {
+          textoInventario.textContent = `${data.inventario_bajo} productos bajos`;
+          textoInventario.style.color = 'var(--warning-color)';
+        }
+        
+        // Actualizar tendencia
+        const tendenciaVentas = document.getElementById('tendenciaVentas');
+        if (parseFloat(data.ventas_hoy) > 0) {
+          tendenciaVentas.innerHTML = '<i class="fas fa-arrow-up"></i> <span>Ventas activas</span>';
+          tendenciaVentas.className = 'estadistica-tendencia tendencia-positiva';
+        } else {
+          tendenciaVentas.innerHTML = '<i class="fas fa-info-circle"></i> <span>Sin ventas hoy</span>';
+          tendenciaVentas.className = 'estadistica-tendencia';
+        }
+        actualizarActividadReciente(data.actividad_reciente);
+        
+      } catch (error) {
+        console.error('Error cargando estadísticas:', error);
+        document.querySelectorAll('.estadistica-valor').forEach(el => {
+          el.textContent = el.textContent.includes('$') ? '$0' : '0';
+        });
+        document.getElementById('listaActividad').innerHTML = 
+          '<div class="item-actividad" style="text-align: center; padding: 20px;">' +
+          '<p style="color: var(--error-color);">Error cargando actividad</p></div>';
+      }
+    }
+    
+    function actualizarActividadReciente(actividades) {
+      const listaActividad = document.getElementById('listaActividad');
+      
+      if (!actividades || actividades.length === 0) {
+        listaActividad.innerHTML = `
+          <div class="item-actividad" style="text-align: center; padding: 30px;">
+            <i class="fas fa-info-circle" style="font-size: 24px; color: var(--text-light);"></i>
+            <p style="margin-top: 10px; color: var(--text-light);">No hay actividad reciente</p>
+          </div>
+        `;
+        return;
+      }
+      
+      let html = '';
+      actividades.forEach(actividad => {
+        let icono = '';
+        let claseIcono = '';
+        
+        switch(actividad.tipo) {
+          case 'venta':
+            icono = 'fa-cash-register';
+            claseIcono = 'venta';
+            break;
+          case 'reserva':
+            icono = 'fa-calendar-check';
+            claseIcono = 'agregar';
+            break;
+          case 'menu':
+            icono = 'fa-utensils';
+            claseIcono = 'editar';
+            break;
+          default:
+            icono = 'fa-history';
+            claseIcono = 'venta';
+        }
+        
+        // Calcular tiempo relativo
+        const fechaActividad = new Date(actividad.fecha);
+        const ahora = new Date();
+        const diferencia = Math.floor((ahora - fechaActividad) / (1000 * 60));
+        
+        let tiempoRelativo = '';
+        if (diferencia < 60) {
+          tiempoRelativo = `Hace ${diferencia} min`;
+        } else if (diferencia < 1440) {
+          tiempoRelativo = `Hace ${Math.floor(diferencia / 60)} horas`;
+        } else {
+          tiempoRelativo = fechaActividad.toLocaleDateString('es-ES', {day: 'numeric', month: 'short'});
+        }
+        
+        html += `
+          <div class="item-actividad">
+            <div class="actividad-icon ${claseIcono}">
+              <i class="fas ${icono}"></i>
+            </div>
+            <div class="actividad-info">
+              <h4>${actividad.descripcion}</h4>
+              <p>${actividad.detalle}</p>
+            </div>
+            <div class="actividad-hora">${tiempoRelativo}</div>
+          </div>
+        `;
+      });
+      
+      listaActividad.innerHTML = html;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      cargarSidebar("admin");
+      setTimeout(marcarActivoSidebar, 500);
+      cargarEstadisticasReales();
+      
+      setInterval(cargarEstadisticasReales, 30000);
+    });
+  </script>
+</body>
+</html>

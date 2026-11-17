@@ -1,0 +1,266 @@
+/**
+ * Estilos de Reportes y Analitica - El Gusto Marino
+ * Paleta Rústica Artesanal (Carbón Neutro Cálido, Terracota & Crema Marfil)
+ * - Cero predominancia azul
+ * - Fondo neutro balanceado con acento terracota orgánico
+ */
+
+@import url('../css/theme.css');
+
+body, html {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.ocean-bg {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg-app);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(200, 93, 69, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(155, 108, 79, 0.04) 0%, transparent 45%);
+}
+
+.dashboard-layout {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.main-content {
+  margin-left: 270px;
+  padding: 30px 40px 60px;
+  width: calc(100% - 270px);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.reportes-container {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+/* Header Principal */
+.reportes-header {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.reportes-header h1 {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-pure);
+  margin-bottom: 4px;
+}
+
+.reportes-header .subtitle {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* Panel de Filtros */
+.filtros-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow-card);
+}
+
+.filtros-card h3 {
+  font-size: 1.05rem;
+  color: var(--text-pure);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.filtro-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filtro-group label {
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.filtro-group select,
+.filtro-group input[type="date"] {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-pure);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  box-sizing: border-box;
+}
+
+.filtro-group select:focus,
+.filtro-group input[type="date"]:focus {
+  outline: none;
+  border-color: var(--c-terracota);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.btn-filtrar {
+  background: linear-gradient(135deg, #C85D45 0%, #A94A34 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(200, 93, 69, 0.35);
+}
+
+.btn-filtrar:hover {
+  background: linear-gradient(135deg, #D76B53 0%, #C85D45 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 93, 69, 0.5);
+}
+
+/* Secciones de Tablas de Reporte */
+.tabla-reporte {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow-card);
+}
+
+.tabla-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tabla-header h2 {
+  font-size: 1.25rem;
+  color: var(--text-pure);
+  font-weight: 700;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-exportar {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-exportar:hover {
+  background: rgba(200, 93, 69, 0.18);
+  border-color: rgba(200, 93, 69, 0.4);
+  color: #F19A86;
+}
+
+/* Tablas */
+.tabla-container {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+#tablaPedidosPagados,
+#tablaPlatillosPopulares {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+#tablaPedidosPagados th,
+#tablaPlatillosPopulares th {
+  background: #191A1E;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+#tablaPedidosPagados td,
+#tablaPlatillosPopulares td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+#tablaPedidosPagados tbody tr:hover,
+#tablaPlatillosPopulares tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.total-row td {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: var(--text-pure) !important;
+  font-size: 1.05rem;
+  padding: 14px 16px !important;
+  border-top: 2px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+#totalGeneral {
+  color: #34d399 !important;
+  font-size: 1.2rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 70px 20px 40px;
+  }
+}
